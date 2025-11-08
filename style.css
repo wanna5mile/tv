@@ -41,7 +41,7 @@ header a {
 }
 
 header img {
-  width: 32px;   /* Smaller image */
+  width: 32px;
   height: 32px;
   object-fit: contain;
 }
@@ -78,29 +78,34 @@ header h1 {
   padding: 2rem;
 }
 
-/* Keep image sizes consistent */
 .anime-grid a {
   display: block;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
-.anime-grid img {
+/* 🔧 Fixed image clarity issues */
 .anime-grid img {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: center;
   border-radius: 10px;
-  transition: transform 0.2s ease;
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-  image-rendering: auto;            /* lets browser use high-quality resampling */
-  transform: translateZ(0);         /* triggers GPU smoothing on Chrome */
-  -webkit-font-smoothing: antialiased;
+
+  /* High-quality rendering and no pixelation */
+  image-rendering: auto;
+  transform: translateZ(0);            /* Prevent blurring during scaling */
   backface-visibility: hidden;
+  will-change: transform;              /* Hint browser to optimize scaling */
+  transition: transform 0.25s ease-out, filter 0.25s ease-out;
+  filter: brightness(100%);
 }
 
-
+/* Hover effect — smooth and sharp */
 .anime-grid img:hover {
   transform: scale(1.05);
+  filter: brightness(1.05);
 }
 
 /* Info */
@@ -134,6 +139,7 @@ footer {
     flex-direction: column;
     gap: 0.5rem;
   }
+
   .anime-grid {
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   }
