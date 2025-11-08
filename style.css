@@ -84,13 +84,20 @@ header h1 {
 }
 
 .anime-grid img {
+.anime-grid img {
   width: 100%;
-  aspect-ratio: 3 / 4;  /* keeps consistent proportions */
+  aspect-ratio: 3 / 4;
   object-fit: cover;
+  object-position: center;
   border-radius: 10px;
   transition: transform 0.2s ease;
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  image-rendering: auto;            /* lets browser use high-quality resampling */
+  transform: translateZ(0);         /* triggers GPU smoothing on Chrome */
+  -webkit-font-smoothing: antialiased;
+  backface-visibility: hidden;
 }
+
 
 .anime-grid img:hover {
   transform: scale(1.05);
