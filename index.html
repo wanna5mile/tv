@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sl4ckrr.tv</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/c425e24a8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <a><img src=""/><h1>Sl4ckrr.tv</h1></a>
+    <div class="search">
+      <input id="searchInput" type="text" placeholder="Search anime...">
+      <i class="fa fa-search"></i>
+    </div>
+  </header>
+
+  <main>
+    <section id="animes" class="anime-grid">
+      <!-- Anime cards -->
+      <a href="watch.html?anime=mobpsycho100"><img src="img/mp100.jpeg" alt="Mob Psycho 100"></a>
+      <a href="watch.html?anime=deathnote"><img src="img/dn.jpeg" alt="Death Note"></a>
+      <a href="watch.html?anime=evangelion"><img src="img/evangelion.jpeg" alt="Evangelion"></a>
+      <a href="watch.html?anime=dandadan"><img src="img/dandadan3.jpeg" alt="Dandadan"></a>
+      <a href="watch.html?anime=hxh"><img src="img/hxh.jpeg" alt="Hunter x Hunter"></a>
+      <a href="watch.html?anime=onepiecegold"><img src="img/gold.jpeg" alt="One Piece Film Gold"></a>
+      <a href="watch.html?anime=onepiecered"><img src="img/red.jpeg" alt="One Piece Film Red"></a>
+      <a href="watch.html?anime=onepiecestampede"><img src="img/stampede.jpeg" alt="One Piece Stampede"></a>
+    </section>
+
+    <hr>
+
+    <section class="info">
+      <h2>INFO!</h2>
+      <p>
+        Sl4ckrr.tv — a trustworthy ad-free anime site. created in 2024 and continued to be updated
+      </p>
+      <p>
+        <a href="#">Request an anime</a> • 
+        <a href="#">Report a problem</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Sl4ckrr.tv</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
+  const animeContainer = document.getElementById("animes");
+  const animeCards = animeContainer.querySelectorAll("a");
+
+  // Function: Filter anime cards by search input
+  const filterAnimes = () => {
+    const term = searchInput.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    animeCards.forEach(card => {
+      const title = card.querySelector("img").alt.toLowerCase();
+
+      if (title.includes(term)) {
+        card.style.display = "";
+        visibleCount++;
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+    // Optional: show a "no results" message dynamically
+    let noResults = document.getElementById("noResults");
+    if (!noResults) {
+      noResults = document.createElement("p");
+      noResults.id = "noResults";
+      noResults.style.textAlign = "center";
+      noResults.style.margin = "2rem";
+      noResults.style.fontSize = "1.2rem";
+      noResults.style.color = "#555";
+      animeContainer.after(noResults);
+    }
+
+    noResults.textContent = visibleCount === 0 ? "No results found 😢" : "";
+  };
+
+  // Filter as user types
+  searchInput.addEventListener("input", filterAnimes);
+});
+</script>
+</body>
+</html>
