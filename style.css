@@ -73,35 +73,40 @@ header h1 {
 /* Anime Grid */
 .anime-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1.2rem;
   padding: 2rem;
+  justify-items: center;
 }
 
 .anime-grid a {
-  display: block;
+  display: inline-block;
   overflow: hidden;
   border-radius: 10px;
+  background: var(--card-bg);
+  padding: 0.3rem;
+  transition: transform 0.2s ease-out;
 }
 
-/* 🔧 Fixed image clarity issues */
+/* ✅ Natural image size, no pixelation */
 .anime-grid img {
-  width: 30%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 10px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 
-  /* High-quality rendering and no pixelation */
+  /* Keep crisp and smooth */
   image-rendering: auto;
-  transform: translateZ(0);            /* Prevent blurring during scaling */
+  -webkit-font-smoothing: antialiased;
+  transform: translateZ(0);
   backface-visibility: hidden;
-  will-change: transform;              /* Hint browser to optimize scaling */
+  will-change: transform;
   transition: transform 0.25s ease-out, filter 0.25s ease-out;
   filter: brightness(100%);
 }
 
-/* Hover effect — smooth and sharp */
+/* Smooth hover, no blur */
 .anime-grid img:hover {
   transform: scale(1.05);
   filter: brightness(1.05);
@@ -123,6 +128,7 @@ header h1 {
   text-decoration: none;
 }
 
+/* Footer */
 footer {
   background: var(--card-bg);
   padding: 1rem;
