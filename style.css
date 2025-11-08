@@ -90,8 +90,8 @@ header h1 {
 
 /* ✅ Natural image size, no pixelation */
 .anime-grid img {
-  max-width: 100%;
-  height: auto;
+  width: 220px;
+  height:330px;  height: auto;
   display: block;
   border-radius: 8px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
