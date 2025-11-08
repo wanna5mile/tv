@@ -86,8 +86,7 @@ header h1 {
 
 /* 🔧 Fixed image clarity issues */
 .anime-grid img {
-  width: 100%;
-  aspect-ratio: 3 / 4;
+  width: 30%;
   object-fit: cover;
   object-position: center;
   border-radius: 10px;
